@@ -22,6 +22,11 @@ pipeline {
             }
         }
     }
+    stage('Code Coverage') {
+        steps {
+            jacoco changeBuildStatus: true, maximumLineCoverage: '50'
+        }
+    }
     post {
         always {
             junit 'build/test-results/**/TEST-*.xml'
